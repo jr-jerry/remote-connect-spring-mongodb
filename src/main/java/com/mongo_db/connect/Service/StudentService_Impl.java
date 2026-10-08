@@ -4,6 +4,7 @@ import com.mongo_db.connect.Entity.StudentEntity;
 import com.mongo_db.connect.Repository.StudentRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public class StudentService_Impl implements StudentService_Interface{
@@ -25,6 +26,12 @@ public class StudentService_Impl implements StudentService_Interface{
             throw new RuntimeException("Student Not Found ! ");
         }
     }
+
+    @Override
+    public List<StudentEntity> findAllStudents() {
+        return studentRepo.findAll();
+    }
+
     @Override
     public void removeStudent(String name) {
          StudentEntity existsStudent=findByStudentName(name);

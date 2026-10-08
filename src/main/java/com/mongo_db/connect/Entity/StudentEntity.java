@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @Data
 @Document(collection = "student_tb")
-//@Entity-->Map Pojo-->Table
 public class StudentEntity {
     @Id
     private String id;

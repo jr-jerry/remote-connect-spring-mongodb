@@ -4,10 +4,7 @@ import com.mongo_db.connect.Entity.StudentEntity;
 import com.mongo_db.connect.Service.StudentService_Interface;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/student")
@@ -21,5 +18,13 @@ public class StudentController {
     public ResponseEntity<?> saveStudent(@RequestBody StudentEntity studentEntity){
        StudentEntity savedStudent= studentServiceImpl.saveStudent(studentEntity);
        return ResponseEntity.status(HttpStatus.CREATED).body(savedStudent);
+    }
+    @DeleteMapping("/remove")
+    public ResponseEntity<?> removeStudent(@RequestParam String name){
+        ResponseEntity.status(HttpStatus.ACCEPTED).body(studentServiceImpl.removeStudent(name));
+    }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllStudents(){
+        return ResponseEntity.status(200).body(studentServiceImpl.findAllStudents());
     }
 }
