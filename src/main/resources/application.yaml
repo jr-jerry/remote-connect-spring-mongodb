@@ -1,4 +1,9 @@
 spring:
+  data:
+    redis:
+      host: localhost
+      post: 6379
+
   mongodb:
     host: localhost
     port: 27017

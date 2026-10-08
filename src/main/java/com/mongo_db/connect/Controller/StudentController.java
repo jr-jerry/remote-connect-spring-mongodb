@@ -14,6 +14,10 @@ public class StudentController {
     public StudentController(StudentService_Interface studentServiceImpl) {
         this.studentServiceImpl = studentServiceImpl;
     }
+    @GetMapping()
+    public ResponseEntity<?> findByName(@RequestParam String name){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(studentServiceImpl.findByStudentName(name));
+    }
     @PostMapping("/create")
     public ResponseEntity<?> saveStudent(@RequestBody StudentEntity studentEntity){
        StudentEntity savedStudent= studentServiceImpl.saveStudent(studentEntity);
@@ -21,8 +25,10 @@ public class StudentController {
     }
     @DeleteMapping("/remove")
     public ResponseEntity<?> removeStudent(@RequestParam String name){
-        ResponseEntity.status(HttpStatus.ACCEPTED).body(studentServiceImpl.removeStudent(name));
+        studentServiceImpl.removeStudent(name);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Deleted student");
     }
+
     @GetMapping("/all")
     public ResponseEntity<?> getAllStudents(){
         return ResponseEntity.status(200).body(studentServiceImpl.findAllStudents());
