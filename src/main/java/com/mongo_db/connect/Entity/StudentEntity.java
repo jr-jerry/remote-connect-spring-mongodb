@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @Document(collection = "student_tb")
 public class StudentEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     private String id;
     private String name;
