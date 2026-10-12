@@ -14,6 +14,10 @@ public class StudentController {
     public StudentController(StudentService_Interface studentServiceImpl) {
         this.studentServiceImpl = studentServiceImpl;
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getStudentById(@PathVariable String id) {
+        return ResponseEntity.status(200).body(studentServiceImpl.findStudentById(id));
+    }
     @GetMapping()
     public ResponseEntity<?> findByName(@RequestParam String name){
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(studentServiceImpl.findByStudentName(name));

@@ -9,4 +9,6 @@ public interface StudentService_Interface {
     StudentEntity findByStudentName(String name);
     List<StudentEntity> findAllStudents();
     void removeStudent(String name);
+
+     StudentEntity findStudentById(String studentId);
 }
